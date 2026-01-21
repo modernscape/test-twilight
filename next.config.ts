@@ -1,8 +1,11 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export", // 静的HTMLとして書き出す設定
+  images: {
+    unoptimized: true, // GitHub Pagesでは画像の自動最適化が使えないため無効化
+  },
+  // もし URLが「https://ユーザー名.github.io/リポジトリ名/」になる場合は
+  // basepath: '/リポジトリ名',
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
-};
-
-export default nextConfig;
+export default nextConfig
