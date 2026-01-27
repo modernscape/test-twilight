@@ -72,8 +72,9 @@ export default function Home() {
 
       {/* 3. メインレイアウト */}
       <div className="flex-1 flex flex-col md:flex-row w-full relative">
-        {/* ロゴエリア：固定幅 */}
-        <div className="flex-none md:w-[400px] flex flex-col justify-center items-center p-10 z-20 pointer-events-none md:pointer-events-auto">
+        {/* コンテンツエリア (SP: 画面中央 / PC: 左側固定幅) */}
+        <div className="absolute inset-0 md:relative md:inset-auto md:flex-none md:w-[400px] flex flex-col justify-center items-center p-10 z-20 pointer-events-none md:pointer-events-auto">
+          {/* ロゴコンテナ */}
           <div className="w-[280px] max-w-[280px] md:max-w-[500px] flex flex-col items-center">
             <div className="w-full pb-6 text-center">
               <Image
@@ -91,16 +92,16 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 画像エリア：フェードアニメーション */}
+        {/* 画像エリア (SP: 全画面 / PC: 右側可変) */}
         <div className="absolute inset-0 p-0 md:relative md:inset-auto md:flex-1 md:pt-24 md:pl-0 md:pb-12 z-10">
           <div className="relative w-full h-full border-0 overflow-hidden">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <motion.div
                 key={currentImgIndex}
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 exit={{opacity: 0}}
-                transition={{duration: 1.5, ease: "easeInOut"}}
+                transition={{duration: 2, ease: "easeInOut"}}
                 className="absolute inset-0"
               >
                 <Image src={images[currentImgIndex]} alt={`Visual ${currentImgIndex}`} fill className="object-cover" priority />
