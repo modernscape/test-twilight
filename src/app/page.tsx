@@ -147,11 +147,11 @@ export default function Home() {
               animate={{x: 0}}
               exit={{x: "100%"}}
               transition={{type: "spring", damping: 25, stiffness: 200}}
-              className="fixed top-0 right-0 h-full w-[280px] bg-white z-[120] border-l border-black flex flex-col"
+              className="fixed top-0 right-0 h-full w-[280px] bg-white z-[120] flex flex-col"
             >
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-6 md:p-10 border-b border-black w-full flex flex-col items-center justify-center space-y-2 bg-white"
+                className="p-6 md:p-10 w-full flex flex-col items-center justify-center space-y-2 bg-white"
               >
                 <div className="relative w-8 h-4 flex items-center justify-center">
                   <motion.div
@@ -169,7 +169,6 @@ export default function Home() {
                     className="absolute w-8 h-[2.5px] bg-black"
                   />
                 </div>
-                <span className="text-[10px] font-black tracking-[0.2em] uppercase mt-1">Close</span>
               </button>
               <nav className="flex flex-col space-y-12 text-right p-10 mt-10">
                 {["Online Store", "About", "Selection"].map((item) => (
