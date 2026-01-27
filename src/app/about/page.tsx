@@ -1,42 +1,64 @@
 "use client"
 
-import {motion} from "framer-motion"
+import {useState} from "react" // useStateを追加
+import {motion, AnimatePresence} from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import {Instagram} from "lucide-react"
 
 export default function AboutPage() {
+  const [isOpen, setIsOpen] = useState(false) // メニュー状態
   const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
 
-  // 型エラーを回避するための transition 設定
   const fadeInUp = {
-    initial: {opacity: 0, y: 30},
+    initial: {opacity: 0, y: 100},
     whileInView: {opacity: 1, y: 0},
-    viewport: {once: true},
-    transition: {
-      duration: 0.8,
-      ease: [0.33, 1, 0.68, 1] as const,
-    },
+    viewport: {once: true, margin: "-20% 0px -20% 0px"},
+    transition: {duration: 1.2, ease: [0.22, 1, 0.36, 1] as const},
+  }
+
+  const lineVariants = {
+    closed: (i: number) => ({
+      rotate: 0,
+      y: i === 1 ? -3 : 3,
+      transition: {duration: 0.2},
+    }),
+    open: (i: number) => ({
+      rotate: i === 1 ? 45 : -45,
+      y: 0,
+      transition: {delay: 0.2, duration: 0.3},
+    }),
   }
 
   const selectionItems = [
-    {id: "01", title: "Industrial Texture", img: "/img-01.png"},
-    {id: "02", title: "Ambient Light", img: "/img-02.png"},
-    {id: "03", title: "Minimalist Form", img: "/img-03.png"},
-    {id: "04", title: "Tokyo Fragment", img: "/img-04.png"},
+    {id: "01", title: "Industrial Texture", img: "/img-1.png"},
+    {id: "02", title: "Ambient Light", img: "/img-2.png"},
+    {id: "03", title: "Minimalist Form", img: "/img-3.png"},
+    {id: "04", title: "Tokyo Fragment", img: "/img-4.png"},
   ]
 
   return (
     <main className="min-h-screen w-full bg-white text-black font-sans selection:bg-black selection:text-white">
-      {/* --- HEADER --- */}
-      <nav className="fixed top-0 left-0 w-full h-20 flex items-center justify-between px-6 md:px-10 z-[100] bg-white/90 backdrop-blur-sm">
+      {/* 1. 右上固定MENUボタン */}
+      <AnimatePresence>
+        {!isOpen && (
+          <motion.button
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            onClick={() => setIsOpen(true)}
+            className="fixed top-0 right-0 p-4 md:p-6 bg-white z-[80] hover:bg-black hover:text-white transition-colors border-l border-b border-black md:border-none"
+          >
+            <span className="text-[10px] font-black tracking-[0.2em] uppercase">Menu</span>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* --- HEADER (ロゴのみ) --- */}
+      <nav className="fixed top-0 left-0 w-full h-20 flex items-center px-6 md:px-10 z-[70] bg-white/90 backdrop-blur-sm">
         <Link href="/">
           <Image src={`${basePath}/logo.png`} alt="logo" width={100} height={30} className="w-auto h-6 md:h-7 object-contain" />
         </Link>
-        <div className="flex flex-col items-end">
-          <span className="text-[10px] font-bold tracking-[0.2em] leading-none">ME</span>
-          <span className="text-[10px] font-bold tracking-[0.2em] leading-none">NU</span>
-        </div>
       </nav>
 
       <div className="pt-40 pb-32 px-6 md:px-0 flex flex-col items-center">
@@ -56,7 +78,7 @@ export default function AboutPage() {
           {/* Shop Info with Image */}
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-12 text-left">
             <div className="relative w-full max-w-[400px] aspect-[4/3] overflow-hidden">
-              <Image src={`${basePath}/img-01.png`} alt="Shop" fill className="object-cover" />
+              <Image src={`${basePath}/img-1.png`} alt="Shop" fill className="object-cover" />
             </div>
             <div className="text-[11px] md:text-xs tracking-widest space-y-6 pt-4">
               <div className="flex gap-8">
@@ -89,7 +111,7 @@ export default function AboutPage() {
           // 1. スクロール停止位置をさらに深く設定 (ヘッダーとの距離を確保)
           className="scroll-mt-60 w-full max-w-[1000px] mb-40 text-center"
           // 2. アニメーションの開始位置を大きく下（y: 100）に設定
-          initial={{opacity: 0, y: 30}}
+          initial={{opacity: 0, y: 0}}
           // 3. 画面内に入ってから発火するタイミングを調整
           whileInView={{opacity: 1, y: 0}}
           // 4. ジャンプ直後に発火して位置がズレるのを防ぐため、margin を厳しめに設定
@@ -177,12 +199,13 @@ export default function AboutPage() {
         </motion.section>
       </div>
 
-      <footer className="w-full border-t border-black px-6 md:px-10 h-24 flex items-center justify-between">
+      {/* --- FOOTER --- */}
+      <footer className="w-full border-t border-black px-6 md:px-10 h-24 flex items-center justify-between relative z-10">
         <div className="flex gap-8 text-[10px] font-black tracking-widest uppercase">
           <Link href="/about" className="hover:line-through">
             About
           </Link>
-          <Link href="/about" className="hover:line-through">
+          <Link href="/about#selection" className="hover:line-through">
             Selection
           </Link>
         </div>
@@ -191,6 +214,67 @@ export default function AboutPage() {
           <Instagram size={18} strokeWidth={1.5} className="cursor-pointer" />
         </div>
       </footer>
+
+      {/* 5. スライドメニュー (Topと共通) */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              exit={{opacity: 0}}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/20 backdrop-blur-md z-[110]"
+            />
+            <motion.div
+              initial={{x: "100%"}}
+              animate={{x: 0}}
+              exit={{x: "100%"}}
+              transition={{type: "spring", damping: 25, stiffness: 200}}
+              className="fixed top-0 right-0 h-full w-[280px] bg-white z-[120] border-l border-black flex flex-col"
+            >
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-6 md:p-10 border-b border-black w-full flex flex-col items-center justify-center space-y-2 bg-white"
+              >
+                <div className="relative w-8 h-4 flex items-center justify-center">
+                  <motion.div
+                    variants={lineVariants}
+                    initial="closed"
+                    animate="open"
+                    custom={1}
+                    className="absolute w-8 h-[2.5px] bg-black"
+                  />
+                  <motion.div
+                    variants={lineVariants}
+                    initial="closed"
+                    animate="open"
+                    custom={2}
+                    className="absolute w-8 h-[2.5px] bg-black"
+                  />
+                </div>
+              </button>
+              <nav className="flex flex-col space-y-12 text-right p-10 mt-10">
+                {[
+                  {name: "Top", href: "/"},
+                  {name: "Online Store", href: "#"},
+                  {name: "About", href: "/about"},
+                  {name: "Selection", href: "/about#selection"},
+                ].map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-black tracking-[0.2em] hover:italic hover:opacity-50 transition-all uppercase"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </main>
   )
 }
