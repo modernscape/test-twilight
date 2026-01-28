@@ -24,7 +24,7 @@ export default function AboutPage() {
 
   return (
     // ナビゲーションと被らないように pt-40（上の余白）は残します
-    <main className="min-h-screen w-full bg-white text-black pt-40 pb-32 px-6 md:px-10 flex flex-col items-center">
+    <div className="min-h-screen w-full bg-white text-black pt-40 pb-32 px-6 md:px-10 flex flex-col items-center">
       {/* --- ABOUT SECTION --- */}
       <motion.section {...fadeInUp} id="about" className="w-full mb-60 text-center">
         {/* <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2> */}
@@ -122,6 +122,6 @@ export default function AboutPage() {
           </div>
         </div>
       </motion.section>
-    </main>
+    </div>
   )
 }
