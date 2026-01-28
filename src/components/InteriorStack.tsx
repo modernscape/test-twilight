@@ -63,9 +63,13 @@ export default function InteriorStack({basePath}: {basePath: string}) {
   })
 
   return (
-    // 親要素。ここで横方向のはみ出しを許可しつつ、上位でカットするようにします
-    <div ref={containerRef} className="relative h-[400vh] w-full">
-      <div className="sticky top-0 left-0 w-full h-screen flex items-center justify-center">
+    // ✨ ポイント: h-[400vh] でスクロール量は確保しつつ、
+    // stickyコンテナを h-screen ではなく、画像と同じ比率（aspect-[16/9]）に合わせる
+    <div ref={containerRef} className="relative h-[400vh] w-full mt-20 mb-20">
+      {/* sticky の高さを h-screen にせず、
+        画像の高さ（aspect-[16/9]）に合わせることで上下の余白を消す
+      */}
+      <div className="sticky top-[20%] left-0 w-full aspect-[16/9] md:aspect-[21/9] flex items-center justify-center">
         {images.map((src, index) => (
           <StackCard key={src} src={src} index={index} total={images.length} basePath={basePath} progress={scrollYProgress} />
         ))}
