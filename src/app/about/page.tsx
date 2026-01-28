@@ -27,7 +27,6 @@ export default function AboutPage() {
       {/* --- ABOUT SECTION --- */}
       <motion.section {...fadeInUp} id="about" className="w-full max-w-[800px] mb-60 text-center">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2>
-        {/* ❌ Line removed: w-8 h-[2px] bg-black */}
 
         <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium">
           <p>2017年6月に、大阪・中津にてオープンしたショップです。</p>
@@ -78,12 +77,9 @@ export default function AboutPage() {
 
       {/* --- MORE INFORMATION (Company Info) --- */}
       <motion.section {...fadeInUp} id="more" className="w-full max-w-[900px] text-center">
-        {/* <p className="text-[10px] font-black tracking-[0.4em] uppercase mb-24 opacity-40">More Information</p> */}
         <h2 className="text-sm font-black tracking-[0.5em] mb-20">会社概要</h2>
 
         <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-16 md:gap-32 text-left text-[11px] md:text-xs tracking-[0.15em]">
-          {/* ❌ Center Line removed: md:block absolute ... w-[1px] bg-black */}
-
           <div className="space-y-8 w-full md:w-[320px]">
             <div className="flex justify-between items-end">
               <span className="opacity-40 text-[9px] uppercase font-bold">会社名</span>

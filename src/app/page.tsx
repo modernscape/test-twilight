@@ -1,6 +1,6 @@
 "use client"
 
-import {useState, useEffect} from "react" // useEffectを追加
+import {useState, useEffect} from "react"
 import Image from "next/image"
 import {motion, AnimatePresence} from "framer-motion"
 import Menu from "../components/Menu"
@@ -36,8 +36,6 @@ export default function Home() {
   }, [images.length])
 
   return (
-    // <main className="relative h-[100dvh] w-full bg-white overflow-hidden flex flex-col font-sans text-black">
-    // {/* // <main className="relative h-[100dvh] w-full bg-white overflow-hidden flex flex-col items-center justify-center"> */}
     // {/* 3. メインレイアウト */}
     <div className="flex-1 flex flex-col md:flex-row w-full relative h-full">
       {/* コンテンツエリア (SP: 画面中央 / PC: 左側固定幅) */}
