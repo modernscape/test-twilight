@@ -34,17 +34,23 @@ function StackCard({
   const start = index * segment
   const end = (index + 1) * segment
 
-  // ✨ ここがポイント！
-  // 画像がパッと現れてから、次の画像が来るまで「粘る」ように範囲を調整します。
-  // 0.8 という数値は、セグメントの8割までは不透明度100%を維持するという意味です。
-  const fadeStart = start + segment * 0.8
+  // ✨ 画像が「止まっている」時間と「動き出す」時間の境界線 (0.8 = 8割まで止まる)
+  const freezeUntil = start + segment * 0.8
 
-  // スケールと不透明度の変化を「セグメントの最後の方」だけに集中させる
-  const scale = useTransform(progress, [fadeStart, end], [1, index === total - 1 ? 1 : 0.9])
-  const opacity = useTransform(progress, [fadeStart, end], [1, index === total - 1 ? 1 : 0])
-  // const scale = useTransform(progress, [start, end], [1, index === total - 1 ? 1 : 0.85])
-  // const opacity = useTransform(progress, [start, end], [1, index === total - 1 ? 1 : 0])
-  const y = useTransform(progress, [start, end], [0, index === total - 1 ? 0 : -40])
+  // 1. スケール：最後の画像以外は、freezeUntilを過ぎてから縮小
+  const scale = useTransform(progress, [freezeUntil, end], [1, index === total - 1 ? 1 : 0.85])
+
+  // 2. 不透明度：同じくfreezeUntilを過ぎてからフェードアウト
+  const opacity = useTransform(progress, [freezeUntil, end], [1, index === total - 1 ? 1 : 0])
+
+  // 3. 位置の固定 (重要)：
+  // スクロールで上に逃げようとする力を、反対方向の y で打ち消して「静止」させます
+  // 最後の画像以外は、次の画像が来るまで y を 0（固定）に保つイメージです
+  const y = useTransform(
+    progress,
+    [start, freezeUntil, end],
+    [0, 0, index === total - 1 ? 0 : -50], // 最後だけ少し上に逃がすと自然です
+  )
 
   return (
     <motion.div
