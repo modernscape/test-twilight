@@ -16,10 +16,10 @@ export default function Home() {
 
   // 画像のリスト
   const images = [
-    `${basePath}/hero-texture-1.png`,
-    `${basePath}/hero-texture-2.png`,
-    `${basePath}/hero-texture-3.png`,
-    `${basePath}/hero-texture-4.png`,
+    `${basePath}/hero-texture-1.jpeg`,
+    `${basePath}/hero-texture-2.jpen`,
+    `${basePath}/hero-texture-3.jpeg`,
+    `${basePath}/hero-texture-4.jpeg`,
   ]
 
   // 5秒ごとに画像をランダムに切り替えるタイマー
