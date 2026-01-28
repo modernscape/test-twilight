@@ -25,7 +25,7 @@ export default function Menu({isOpen, setIsOpen}: MenuProps) {
   const menuItems = [
     // {name: "Top", href: "/", isExternal: false},
     // {name: "Online Store", href: "#", isExternal: true},
-    {name: "About", href: "/about", isExternal: false},
+    {name: "Shop", href: "/about", isExternal: false},
     {name: "Selection", href: "/about#selection", isExternal: false},
   ]
   return (

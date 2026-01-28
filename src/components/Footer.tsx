@@ -9,7 +9,7 @@ export default function Footer() {
       {/* 左下リンク */}
       <div className="flex gap-8 text-[10px] font-black tracking-widest uppercase">
         <Link href="/about" className="hover:line-through">
-          About
+          Shop
         </Link>
         <Link href="/about#selection" className="hover:line-through">
           Selection
