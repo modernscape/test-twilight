@@ -4,7 +4,21 @@ import {useRef} from "react"
 import {motion, useScroll, useTransform, MotionValue} from "framer-motion"
 import Image from "next/image"
 
-const images = ["/hero-texture-1.jpeg", "/hero-texture-2.jpeg", "/hero-texture-3.jpeg", "/hero-texture-4.jpeg"]
+const images = [
+  "/hero-texture-1.jpeg", //
+  "/clear.png", //
+  "/clear.png", //
+  "/clear.png", //
+  "/hero-texture-2.jpeg",
+  "/clear.png", //
+  "/clear.png", //
+  "/clear.png", //
+  "/hero-texture-3.jpeg",
+  "/clear.png", //
+  "/clear.png", //
+  "/clear.png", //
+  "/hero-texture-4.jpeg",
+]
 
 // ✨ 各画像を制御する子コンポーネント
 function StackCard({
