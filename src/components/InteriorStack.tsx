@@ -36,7 +36,7 @@ function StackCard({
         y,
         zIndex: total - index,
       }}
-      className="absolute w-screen -mx-6 md:-mx-10 aspect-[16/9] md:aspect-[21/9]"
+      className="absolute left-1/2 -translate-x-1/2 w-screen aspect-[16/9] md:aspect-[21/9]"
     >
       <div className="relative w-full h-full overflow-hidden">
         <Image
@@ -44,6 +44,7 @@ function StackCard({
           alt={`Interior ${index}`}
           fill
           className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+          sizes="100vw"
         />
       </div>
     </motion.div>
@@ -62,9 +63,9 @@ export default function InteriorStack({basePath}: {basePath: string}) {
   })
 
   return (
-    /* h-[400vh] くらいにすると、1枚ずつの滞在時間が長くなり、ゆったり重なります */
+    // 親要素。ここで横方向のはみ出しを許可しつつ、上位でカットするようにします
     <div ref={containerRef} className="relative h-[400vh] w-full">
-      <div className="sticky top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 left-0 w-full h-screen flex items-center justify-center">
         {images.map((src, index) => (
           <StackCard key={src} src={src} index={index} total={images.length} basePath={basePath} progress={scrollYProgress} />
         ))}
