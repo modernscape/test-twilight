@@ -104,7 +104,7 @@ export default function InteriorStack({basePath}: {basePath: string}) {
       {/* 💻 PC用 (Desktop): これまでのリッチなスタック演出 */}
       {/* // ✨ ポイント: h-[400vh] でスクロール量は確保しつつ、 // stickyコンテナを h-screen
       ではなく、画像と同じ比率（aspect-[16/9]）に合わせる */}
-      <div ref={containerRef} className="hidden md:block relative h-[1200vh] w-full mt-20 mb-20">
+      <div ref={containerRef} className="hidden md:block relative h-[800vh] w-full mt-20 mb-20">
         <div className="sticky top-[15%] left-0 w-full aspect-[16/9] md:aspect-[21/9]">
           {/* ✨ コンポーネント化したインジケーターを配置 */}
           <VerticalIndicator total={images.length} progress={scrollYProgress} />
