@@ -17,9 +17,9 @@ function IndicatorDot({index, total, progress}: {index: number; total: number; p
 // インジケーター全体のコンポーネント
 export default function VerticalIndicator({total, progress}: {total: number; progress: MotionValue<number>}) {
   return (
-    <div className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-[110]">
+    <div className="absolute right-0 md:right-0 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-[110]">
       {/* ラベル */}
-      <div className="text-[24px] text-white font-black tracking-[0.3em] mb-2 opacity-90 [writing-mode:vertical-lr] uppercase">Scroll</div>
+      <div className="text-[16px] text-white font-black tracking-[0.3em] mb-2 opacity-70 [writing-mode:vertical-lr] uppercase">Scroll</div>
 
       {/* ドット列 */}
       <div className="relative flex flex-col gap-4">

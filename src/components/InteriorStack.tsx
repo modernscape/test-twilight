@@ -29,12 +29,22 @@ function StackCard({
   basePath: string
   progress: MotionValue<number>
 }) {
-  const start = index / total
-  const end = (index + 1) / total
+  // const start = index / total
+  // const end = (index + 1) / total
 
-  // 個別に Hook を呼び出す（これならOK！）
-  const scale = useTransform(progress, [start, end], [1, index === total - 1 ? 1 : 0.85])
-  const opacity = useTransform(progress, [start, end], [1, index === total - 1 ? 1 : 0])
+  // 修正前: index / total
+  // 修正後: index / (total - 1)
+  // こうすることで、最後の画像 (index === total-1) の時に progress が 1.0 になります
+  const start = index / (total > 1 ? total - 1 : 1)
+  const end = (index + 1) / (total > 1 ? total - 1 : 1)
+
+  // 最後の画像だけは、表示されたらそのまま固定（消さない）設定
+  const isLast = index === total - 1
+
+  const scale = useTransform(progress, [start, end], [1, isLast ? 1 : 0.9])
+  const opacity = useTransform(progress, [start, end], [1, isLast ? 1 : 0])
+  // const scale = useTransform(progress, [start, end], [1, index === total - 1 ? 1 : 0.85])
+  // const opacity = useTransform(progress, [start, end], [1, index === total - 1 ? 1 : 0])
   const y = useTransform(progress, [start, end], [0, index === total - 1 ? 0 : -40])
 
   return (
