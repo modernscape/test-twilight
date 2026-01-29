@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import {Instagram, Square} from "lucide-react"
+import {Instagram} from "lucide-react"
 // import {handleJump_} from "../app/utils/scroll"
 // import {scrollToSection} from "../app/utils/scrollToSection"
 import SharedTabLink from "./SharedTabLink"
