@@ -39,7 +39,7 @@ export default function Home() {
     // {/* 3. メインレイアウト */}
     <div className="flex-1 flex flex-col md:flex-row w-full relative h-full">
       {/* コンテンツエリア (SP: 画面中央 / PC: 左側固定幅) */}
-      <div className="absolute inset-0 md:relative md:inset-auto md:flex-none md:w-[400px] flex flex-col justify-center items-center p-10 z-20 pointer-events-none md:pointer-events-auto">
+      <div className="absolute inset-0 md:relative md:inset-auto md:flex-none md:w-[400px] flex flex-col justify-center items-center p-10 z-20 pointer-events-none md:pointer-events-auto landscape:p-4">
         {/* ロゴコンテナ */}
         <div className="w-[280px] max-w-[280px] md:max-w-[500px] flex flex-col items-center">
           <div className="w-full pb-6 text-center">

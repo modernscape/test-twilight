@@ -13,9 +13,15 @@ export default function Navigation() {
   return (
     <>
       {/* HEADER: ロゴとメニューボタン */}
-      <header className="fixed top-0 left-0 w-full h-20 flex items-center justify-between px-6 md:px-10 z-[100] backdrop-blur-sm">
+      <header className="fixed top-0 left-0 w-full h-20 flex items-center justify-between px-6 md:px-10 z-[100] backdrop-blur-sm landscape:py-2 landscape:h-10 landscape:px-4">
         <Link href="/">
-          <Image src={`${basePath}/logo.png`} alt="logo" width={100} height={30} className="w-auto h-6 md:h-7 object-contain" />
+          <Image
+            src={`${basePath}/logo.png`}
+            alt="logo"
+            width={100}
+            height={30}
+            className="w-auto h-6 md:h-7 object-contain landscape:h-4"
+          />
         </Link>
 
         {/* 右上メニューボタン（Borderなし） */}

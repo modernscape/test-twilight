@@ -18,7 +18,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="w-full px-6 md:px-10 h-16 flex items-center justify-between bg-white text-black">
+    <footer className="w-full px-6 md:px-10 h-16 flex items-center justify-between bg-white text-black landscape:py-2 landscape:h-10">
       {/* 左下リンク */}
       <div className="flex gap-8 text-[10px] font-black tracking-widest uppercase">
         <Link href="/about" className="hover:line-through" onClick={() => handleJump("about")}>
