@@ -2,6 +2,7 @@ import type {Metadata} from "next"
 import "./globals.css"
 import Navigation from "../components/Navigation"
 import Footer from "../components/Footer"
+// import SmoothScroll from "../components/SmoothScroll"
 
 export const metadata: Metadata = {
   title: "twilight",
@@ -13,6 +14,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="ja">
       <body className="h-[100dvh] flex flex-col bg-white text-black font-sans overflow-hidden">
         <Navigation />
+
         <main id="main-scroll-container" className="flex-1 relative overflow-y-auto">
           {children}
         </main>

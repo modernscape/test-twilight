@@ -2,6 +2,8 @@
 
 import {motion, AnimatePresence} from "framer-motion"
 import Link from "next/link"
+// import {handleJump_} from "../app/utils/scroll"
+// import {scrollToSection} from "../app/utils/scrollToSection"
 
 interface MenuProps {
   isOpen: boolean
@@ -22,11 +24,22 @@ const lineVariants = {
 }
 
 export default function Menu({isOpen, setIsOpen}: MenuProps) {
+  const handleJump = (id: string) => {
+    const element = document.getElementById(id)
+    console.log(id)
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth", // スルスル動かす
+        block: "start", // 要素の先頭を画面の上に合わせる
+      })
+    }
+  }
   const menuItems = [
     // {name: "Top", href: "/", isExternal: false},
     // {name: "Online Store", href: "#", isExternal: true},
-    {name: "Shop", href: "/about", isExternal: false},
-    {name: "Selection", href: "/about#selection", isExternal: false},
+    {name: "Shop", href: "/about", isExternal: false, id: "about"},
+    {name: "Selection", href: "/about", isExternal: false, id: "selection"},
   ]
   return (
     <AnimatePresence>
@@ -77,19 +90,24 @@ export default function Menu({isOpen, setIsOpen}: MenuProps) {
               {menuItems.map((item) => {
                 const className = "text-lg font-black tracking-[0.2em] hover:opacity-50 transition-all uppercase"
 
-                return item.isExternal ? (
-                  <a
+                return (
+                  <Link
                     key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
+                    href={item.id ? `/about#${item.id}` : item.href} // IDがある場合はハッシュ付きURLにする
                     className={className}
+                    onClick={(e) => {
+                      const isAboutPage = window.location.pathname === "/about"
+
+                      // 1. もし今 /about ページにいるなら、スムーズスクロールさせる
+                      if (isAboutPage && item.id) {
+                        e.preventDefault() // 通常の遷移を止める
+                        handleJump(item.id)
+                      }
+
+                      // 2. メニューを閉じる（共通）
+                      setIsOpen(false)
+                    }}
                   >
-                    {item.name}
-                  </a>
-                ) : (
-                  <Link key={item.name} href={item.href} onClick={() => setIsOpen(false)} className={className}>
                     {item.name}
                   </Link>
                 )

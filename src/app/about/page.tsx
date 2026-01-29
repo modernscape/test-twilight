@@ -1,9 +1,10 @@
 "use client"
 
-import {motion} from "framer-motion"
+import {motion, useMotionValueEvent, useScroll} from "framer-motion"
 import SelectionImage from "@/src/components/SelectionImage"
 import Image from "next/image"
 import InteriorStack from "@/src/components/InteriorStack"
+import {useEffect} from "react"
 
 export default function AboutPage() {
   const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
@@ -22,11 +23,36 @@ export default function AboutPage() {
     {id: "04", title: "Tokyo Fragment", img: "/img-4.png"},
   ]
 
+  const {scrollY} = useScroll() // 引数を空にする（＝windowを監視）
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    console.log("Current Scroll:", latest) // これが出るか確認
+    if (latest > 10 && window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname)
+    }
+  })
+
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log("scroll")
+
+      // URLにハッシュが含まれている場合のみ実行
+      if (window.location.hash) {
+        // スクロールされたらハッシュを除去したURLに書き換える
+        // (履歴を残さずに書き換えることで、戻るボタンへの影響を防ぐ)
+        window.history.replaceState(null, "", window.location.pathname + window.location.search)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, {passive: true})
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
     // ナビゲーションと被らないように pt-40（上の余白）は残します
-    <div className="min-h-screen w-full bg-white text-black pt-40 pb-32 px-6 md:px-10 flex flex-col items-center">
+    <div className="min-h-screen w-full bg-white text-black pt-0 pb-32 px-6 md:px-10 flex flex-col items-center">
       {/* --- ABOUT SECTION --- */}
-      <motion.section {...fadeInUp} id="about" className="w-full mb-60 text-center">
+      <motion.section {...fadeInUp} id="about" className="w-full mb-60 text-center scroll-mt-40">
         {/* <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2> */}
         {/* ✨ 新しい画像スタックコンポーネント */}
         <InteriorStack basePath={basePath} />

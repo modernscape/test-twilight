@@ -1,9 +1,10 @@
 "use client"
 
 import {useRef} from "react"
-import {motion, useScroll, useTransform, MotionValue} from "framer-motion"
+import {motion, useScroll, useTransform, MotionValue, useMotionValueEvent} from "framer-motion"
 import Image from "next/image"
 import VerticalIndicator from "./VerticalIndicator"
+import {useEffect} from "react"
 
 const images = [
   "/hero-texture-1.jpeg", //
@@ -77,6 +78,28 @@ function StackCard({
 
 export default function InteriorStack({basePath}: {basePath: string}) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const {scrollY} = useScroll() // 引数を空にする（＝windowを監視）
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    console.log("Current Scroll:", latest) // これが出るか確認
+    if (latest > 10 && window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname)
+    }
+  })
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // URLにハッシュが含まれている場合のみ実行
+      if (window.location.hash) {
+        // スクロールされたらハッシュを除去したURLに書き換える
+        // (履歴を残さずに書き換えることで、戻るボタンへの影響を防ぐ)
+        window.history.replaceState(null, "", window.location.pathname + window.location.search)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, {passive: true})
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const {scrollYProgress} = useScroll({
     target: containerRef,
@@ -104,7 +127,7 @@ export default function InteriorStack({basePath}: {basePath: string}) {
       {/* 💻 PC用 (Desktop): これまでのリッチなスタック演出 */}
       {/* // ✨ ポイント: h-[400vh] でスクロール量は確保しつつ、 // stickyコンテナを h-screen
       ではなく、画像と同じ比率（aspect-[16/9]）に合わせる */}
-      <div ref={containerRef} className="hidden md:block relative h-[800vh] w-full mt-20 mb-20">
+      <div ref={containerRef} className="hidden md:block relative h-[800vh] w-full mt-5 mb-20">
         <div className="sticky top-0 left-0 w-full h-screen flex flex-col items-center justify-center">
           {/* ✨ コンポーネント化したインジケーターを配置 */}
           <VerticalIndicator total={images.length} progress={scrollYProgress} />
