@@ -17,10 +17,10 @@ export default function AboutPage() {
   }
 
   const selectionItems = [
-    {id: "01", title: "Industrial Texture", img: "/img-1.png"},
-    {id: "02", title: "Ambient Light", img: "/img-2.png"},
-    {id: "03", title: "Minimalist Form", img: "/img-3.png"},
-    {id: "04", title: "Tokyo Fragment", img: "/img-4.png"},
+    {id: "spring", title: "Castles in the Bloom", img: "/img-1.png"},
+    {id: "summer", title: "The Glimmering Horizon", img: "/img-2.png"},
+    {id: "autumn", title: "Layered Earth", img: "/img-3.png"},
+    {id: "winter", title: "Winter's Edge", img: "/img-4.png"},
   ]
 
   const {scrollY} = useScroll() // 引数を空にする（＝windowを監視）

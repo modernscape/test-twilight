@@ -30,7 +30,7 @@ export default function Footer() {
 
       {/* 右下情報 */}
       <div className="flex items-center gap-6">
-        <p className="text-[9px] font-bold tracking-widest opacity-40">© 2019. IMA:ZINE.</p>
+        <p className="text-[9px] font-bold tracking-widest opacity-40">© 2026 twilight</p>
         <Instagram size={18} strokeWidth={1.5} className="cursor-pointer hover:opacity-50 transition-opacity" />
       </div>
     </footer>
