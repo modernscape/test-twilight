@@ -59,7 +59,17 @@ export default function AboutPage() {
         {/* ✨ 新しい画像スタックコンポーネント */}
         <InteriorStack basePath={basePath} />
 
-        <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium -mt-30 max-[1500px]:-mt-50">
+        <div
+          className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-24 font-medium -mt-30 max-[1500px]:-mt-50
+        /* 📱 iPhone横画面(landscape)の時の調整 */
+  landscape:mt-40      /* 重なりを解除して、画像の下に10(40px)の余白を作る */
+  landscape:text-[12px] /* 横画面では少し文字を小さくすると読みやすい */
+  landscape:leading-[2] /* 行間も少し詰めると画面内に収まりやすくなります */
+        
+        
+        
+        "
+        >
           <p>
             コンセプトを表現するための空間として⽩を基調としたシンプルな内装に設えました。
             <br />
