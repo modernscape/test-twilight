@@ -38,24 +38,11 @@ export default function Home() {
   return (
     // {/* 3. メインレイアウト */}
     <div className="flex-1 flex flex-col md:flex-row w-full relative h-full">
-      {/* コンテンツエリア */}
-      <div
-        className="absolute inset-0 
-                    md:relative md:inset-auto md:flex-none md:w-[400px] 
-                    landscape:relative landscape:inset-auto landscape:flex-none landscape:w-[250px]
-                    flex flex-col justify-center items-center p-10 z-20 pointer-events-none md:pointer-events-auto 
-                    landscape:p-4
-                  "
-      >
+      {/* コンテンツエリア (SP: 画面中央 / PC: 左側固定幅) */}
+      <div className="absolute inset-0 md:relative md:inset-auto md:flex-none md:w-[400px] flex flex-col justify-center items-center p-10 z-20 pointer-events-none md:pointer-events-auto landscape:p-4">
         {/* ロゴコンテナ */}
-        <div
-          className="
-                      w-[280px] max-w-[280px] md:max-w-[500px] 
-                      landscape:w-[160px] landscape:max-w-[160px]
-                      flex flex-col items-center
-                    "
-        >
-          <div className="w-full pb-6 landscape:pb-2 text-center">
+        <div className="w-[280px] max-w-[280px] md:max-w-[500px] flex flex-col items-center">
+          <div className="w-full pb-6 text-center">
             <Image
               src={`${basePath}/logo.png`}
               alt="Main Logo"
@@ -65,22 +52,14 @@ export default function Home() {
               priority
             />
           </div>
-          <p className="mt-4 landscape:mt-1 text-[10px] md:text-sm tracking-[0em] font-bold uppercase opacity-80 text-center text-black">
+          <p className="mt-4 text-[10px] md:text-sm tracking-[0em] font-bold uppercase opacity-80 text-center text-black">
             Niigata / Japan
           </p>
         </div>
       </div>
 
-      {/* 画像エリア */}
-      <div
-        className="
-                    absolute inset-0 p-0 
-                    md:relative md:inset-auto md:flex-1 md:pt-24 md:pl-0 md:pb-12 
-                    /* 横画面の時も右側に配置されるようにする */
-                    landscape:relative landscape:inset-auto landscape:flex-1 landscape:px-4 landscape:pt-10 landscape:pb-0
-                    z-10
-                  "
-      >
+      {/* 画像エリア (SP: 全画面 / PC: 右側可変) */}
+      <div className="absolute inset-0 p-0 md:relative md:inset-auto md:flex-1 md:pt-24 md:pl-0 md:pb-12 z-10">
         <div className="relative w-full h-full border-0 overflow-hidden">
           <AnimatePresence>
             <motion.div
@@ -96,7 +75,7 @@ export default function Home() {
           </AnimatePresence>
         </div>
       </div>
-
+      {/* 共通メニューコンポーネントを呼び出す */}
       <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   )

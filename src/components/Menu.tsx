@@ -66,7 +66,7 @@ export default function Menu({isOpen, setIsOpen}: MenuProps) {
             {/* クローズボタン */}
             <button
               onClick={() => setIsOpen(false)}
-              className="p-6 md:p-10 w-full flex flex-col items-center justify-center space-y-2 bg-white"
+              className="p-6 md:p-10 w-full flex flex-col items-center justify-center space-y-2 bg-white landscape:pb-2"
             >
               <div className="relative w-8 h-4 flex items-center justify-center">
                 <motion.div
@@ -87,7 +87,7 @@ export default function Menu({isOpen, setIsOpen}: MenuProps) {
             </button>
 
             {/* ナビゲーション */}
-            <nav className="flex flex-col space-y-12 text-right p-10 mt-10">
+            <nav className="flex flex-col space-y-12 text-right p-10 mt-10 landscape:mt-0">
               {menuItems.map((item) => {
                 const className = "text-lg font-black tracking-[0.2em] transition-all uppercase hover:line-through"
 
