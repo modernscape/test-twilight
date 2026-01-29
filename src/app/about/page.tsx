@@ -174,11 +174,6 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">Instagram</span>
-              {/* <span className="cursor-pointer hover:line-through inline-block w-fit">
-                <a href="https://www.instagram.com/twilight_joetsu_official/" target="instagram">
-                  @twilight
-                </a>
-              </span> */}
               <SharedTabLink>
                 <span>@twilight</span>
               </SharedTabLink>

@@ -15,7 +15,7 @@ interface SharedTabLinkProps {
 // SharedTabLink.tsx
 
 export default function SharedTabLink({
-  href = "https://www.instagram.com/tw_official/",
+  href = "https://www.instagram.com/twilight_joetsu_official/",
   children,
   className = "",
   tabName = "twilight_sns_window",
