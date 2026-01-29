@@ -6,6 +6,7 @@ import Image from "next/image"
 import InteriorStack from "@/src/components/InteriorStack"
 import {useEffect} from "react"
 import SharedTabLink from "@/src/components/SharedTabLink"
+import {Square} from "lucide-react"
 
 export default function AboutPage() {
   const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
@@ -134,7 +135,7 @@ export default function AboutPage() {
 
       {/* --- MORE INFORMATION (Company Info) --- */}
       <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-40">
-        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Shop</h2>
+        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
 
         {/* Shop Info with Image */}
         <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-16 text-left mb-14">
@@ -177,9 +178,15 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">access</span>
-              <span> □ JR北陸新幹線 (東京-上越妙⾼/約2時間) 上越妙⾼駅より⾞で約15分</span>
-              <span> □ 北陸⾃動⾞道 上越インターチェンジより⾞で約10分</span>
-              <span> □ 上信越⾃動⾞道 上越⾼⽥インターチェンジより⾞で約15分</span>
+              <span className="inline-flex items-center gap-1">
+                <Square className="text-gray-400 inline" size={12} /> JR北陸新幹線 (東京-上越妙⾼/約2時間) 上越妙⾼駅より⾞で約15分
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Square className="text-gray-400 inline" size={12} /> 北陸⾃動⾞道 上越インターチェンジより⾞で約10分
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Square className="text-gray-400 inline" size={12} /> 上信越⾃動⾞道 上越⾼⽥インターチェンジより⾞で約15分
+              </span>
             </div>
           </div>
         </div>
