@@ -13,7 +13,7 @@ export default function Navigation() {
   return (
     <>
       {/* HEADER: ロゴとメニューボタン */}
-      <header className="fixed top-0 left-0 w-full h-20 flex items-center justify-between px-6 md:px-10 z-[100] backdrop-blur-sm landscape:py-2 landscape:h-10 landscape:px-4">
+      <header className="fixed top-0 left-0 w-full h-20 flex items-center justify-between px-6 md:px-10 z-[100] backdrop-blur-sm landscape:py-2 landscape:h-8 landscape:px-4">
         <Link href="/">
           <Image
             src={`${basePath}/logo.png`}

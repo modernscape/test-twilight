@@ -95,7 +95,7 @@ export default function AboutPage() {
       </motion.section>
 
       {/* --- SELECTION SECTION --- */}
-      <motion.section {...fadeInUp} id="selection" className="w-full max-w-[1100px] mb-0 text-center scroll-mt-40 landscape:scroll-mt-0">
+      <motion.section {...fadeInUp} id="selection" className="w-full max-w-[1100px] mb-0 text-center scroll-mt-20 landscape:scroll-mt-10">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Location</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
@@ -141,7 +141,7 @@ export default function AboutPage() {
       </motion.section>
 
       {/* --- MORE INFORMATION (Company Info) --- */}
-      <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-40 landscape:scroll-mt-0">
+      <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-20 landscape:scroll-mt-10">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
 
         {/* Shop Info with Image */}
