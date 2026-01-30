@@ -1,6 +1,6 @@
 "use client"
 
-import {useRef} from "react"
+import {useRef, useState} from "react"
 import Image from "next/image"
 import {motion, useScroll, useTransform} from "framer-motion"
 
@@ -15,6 +15,7 @@ interface SelectionItemProps {
 
 export default function SelectionImage({item, basePath}: SelectionItemProps) {
   const ref = useRef<HTMLDivElement>(null)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   // ✨ ポイント: useState/useEffect を使わず、直接関数でコンテナを返す
   const {scrollYProgress} = useScroll({
@@ -63,7 +64,30 @@ export default function SelectionImage({item, basePath}: SelectionItemProps) {
         </h3>
       </motion.div>
 
-      <div className="relative w-full max-w-[1000px] overflow-hidden">
+      <div className="relative w-full max-w-[1000px] overflow-hidden bg-white">
+        {/* 背景に薄い色を敷いておくと、読み込み中も「箱」があることが分かって親切です */}
+
+        <motion.div style={{filter: filterValue, scale: scaleValue}} className="w-full">
+          <Image
+            src={`${basePath}${item.img}`}
+            alt={item.title}
+            width={1200}
+            height={800}
+            /* 1. 初期状態を透明にし、読み込み完了後に transition で表示 
+          2. color: 'transparent' でリンク切れアイコンを封印
+        */
+            className={`
+          w-full h-auto object-contain transition-opacity duration-1000 ease-in-out
+          ${isLoaded ? "opacity-100" : "opacity-0"}
+        `}
+            style={{color: "transparent"}}
+            priority={item.id === "01"}
+            onLoad={() => setIsLoaded(true)}
+          />
+        </motion.div>
+      </div>
+
+      {/* <div className="relative w-full max-w-[1000px] overflow-hidden">
         <motion.div style={{filter: filterValue, scale: scaleValue}} className="w-full">
           <Image
             src={`${basePath}${item.img}`}
@@ -74,7 +98,7 @@ export default function SelectionImage({item, basePath}: SelectionItemProps) {
             priority={item.id === "01"}
           />
         </motion.div>
-      </div>
+      </div> */}
     </div>
   )
 }
