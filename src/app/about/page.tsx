@@ -166,7 +166,9 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">mail</span>
-              <span>twilight_090913@yahoo.co.jp</span>
+              <span>
+                <a href="mailto:twilight_090913@yahoo.co.jp">twilight_090913@yahoo.co.jp</a>
+              </span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-black opacity-30 uppercase text-[9px]">Tel & Fax</span>
