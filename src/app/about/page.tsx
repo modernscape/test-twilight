@@ -36,8 +36,6 @@ export default function AboutPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log("scroll")
-
       // URLにハッシュが含まれている場合のみ実行
       if (window.location.hash) {
         // スクロールされたらハッシュを除去したURLに書き換える
@@ -54,8 +52,7 @@ export default function AboutPage() {
     // ナビゲーションと被らないように pt-40（上の余白）は残します
     <div className="min-h-[100dvh] w-full bg-white text-black pt-0 pb-12 px-6 md:px-10 flex flex-col items-center">
       {/* --- ABOUT SECTION --- */}
-      <motion.section {...fadeInUp} id="about" className="w-full mb-10 text-center scroll-mt-40">
-        {/* <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-16">ABOUT</h2> */}
+      <motion.section {...fadeInUp} id="about" className="w-full mb-10 text-center scroll-mt-20 landscape:scroll-mt-160">
         {/* ✨ 新しい画像スタックコンポーネント */}
         <InteriorStack basePath={basePath} />
 
