@@ -43,3 +43,14 @@ html {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* 1. 画像の中身がない時の「枠線」や「マーク」を透明化 */
+img:not([src]),
+img[src=""] {
+  opacity: 0 !important;
+}
+
+/* 2. Safari/Chrome のアイコン自体を画面外へ飛ばす（荒技） */
+img {
+  text-indent: -10000px;
+}
