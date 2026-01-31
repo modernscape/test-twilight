@@ -92,110 +92,116 @@ export default function AboutPage() {
       </motion.section>
 
       {/* --- SELECTION SECTION --- */}
-      <motion.section {...fadeInUp} id="selection" className="w-full max-w-[1100px] mb-0 text-center scroll-mt-20 landscape:scroll-mt-10">
-        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Location</h2>
+      <div className="relative">
+        <div id="selection" className="absolute -top-20 md:top-[-120px] invisible"></div>
+        <motion.section {...fadeInUp} className="w-full max-w-[1100px] mb-0 text-center scroll-mt-100 landscape:scroll-mt-10">
+          <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Location</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
-          {selectionItems.map((item) => (
-            <SelectionImage key={item.id} item={item} basePath={basePath} />
-          ))}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
+            {selectionItems.map((item) => (
+              <SelectionImage key={item.id} item={item} basePath={basePath} />
+            ))}
+          </div>
 
-        <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-30 font-medium">
-          <p>
-            “新潟県上越市”新潟県の南⻄部に位置する上越市。 <br />
-            市域の中央に流れる関川沿いに開けた平野部を⼭間部と海岸部が囲み、
-            <br />
-            変化に富んだ地形と四季折々の美しい⾃然を有しています。
-            <br />
-            <br />
-            県内3番⽬の⼈⼝規模(約18万⼈)となっており、
-            <br />
-            戦国武将”上杉謙信”の故郷でもあることから歴史的資産も多く残っており、
-            <br />
-            様々な魅⼒が市⺠の豊かな暮らしの輪郭となっています。
-            <br />
-            <br />
-            <span className="text-[#555]">春</span>
-            <br />
-            ⽇本三⼤夜桜のひとつ”⾼⽥城址公園”の観桜会には全国から多くの観光客が訪れます。
-            <br />
-            <span className="text-[#555]">夏</span>
-            <br />
-            アウトドアアクティビティや海産物など⽇本海からの恩恵は多くありますが、
-            <br />
-            その中でも⽇本海に沈む⼣⽇は佳景です。
-            <br />
-            <span className="text-[#555]">秋</span>
-            <br />
-            平野部に広がる和やかな⽥園⾵景は⼈々に季節の移ろいを伝えてくれています。
-            <br />
-            <span className="text-[#555]">冬</span>
-            <br />
-            豪雪地帯ならではの雪化粧は四季のコントラストを強める象徴的な要素です。
-          </p>
-        </div>
-      </motion.section>
+          <div className="space-y-8 text-[13px] md:text-sm leading-[2.4] tracking-[0.18em] mb-30 font-medium">
+            <p>
+              “新潟県上越市”新潟県の南⻄部に位置する上越市。 <br />
+              市域の中央に流れる関川沿いに開けた平野部を⼭間部と海岸部が囲み、
+              <br />
+              変化に富んだ地形と四季折々の美しい⾃然を有しています。
+              <br />
+              <br />
+              県内3番⽬の⼈⼝規模(約18万⼈)となっており、
+              <br />
+              戦国武将”上杉謙信”の故郷でもあることから歴史的資産も多く残っており、
+              <br />
+              様々な魅⼒が市⺠の豊かな暮らしの輪郭となっています。
+              <br />
+              <br />
+              <span className="text-[#555]">春</span>
+              <br />
+              ⽇本三⼤夜桜のひとつ”⾼⽥城址公園”の観桜会には全国から多くの観光客が訪れます。
+              <br />
+              <span className="text-[#555]">夏</span>
+              <br />
+              アウトドアアクティビティや海産物など⽇本海からの恩恵は多くありますが、
+              <br />
+              その中でも⽇本海に沈む⼣⽇は佳景です。
+              <br />
+              <span className="text-[#555]">秋</span>
+              <br />
+              平野部に広がる和やかな⽥園⾵景は⼈々に季節の移ろいを伝えてくれています。
+              <br />
+              <span className="text-[#555]">冬</span>
+              <br />
+              豪雪地帯ならではの雪化粧は四季のコントラストを強める象徴的な要素です。
+            </p>
+          </div>
+        </motion.section>
+      </div>
 
       {/* --- MORE INFORMATION (Company Info) --- */}
-      <motion.section {...fadeInUp} id="company" className="w-full max-w-[1200px] text-center scroll-mt-20 landscape:scroll-mt-10 mb-10">
-        <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
+      <div className="relative">
+        <div id="company" className="absolute -top-20 md:top-[-120px] invisible"></div>
+        <motion.section {...fadeInUp} className="w-full max-w-[1200px] text-center scroll-mt-20 landscape:scroll-mt-10 mb-10">
+          <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
 
-        {/* Shop Info with Image */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-16 text-left mb-10 md:mb-14">
-          <div className="relative w-full w-full md:max-w-[600px] aspect-[4/3] overflow-hidden transition-all duration-700">
-            <Image src={`${basePath}/img-0.jpeg`} alt="Shop" fill className="object-cover" />
+          {/* Shop Info with Image */}
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-16 text-left mb-10 md:mb-14">
+            <div className="relative w-full w-full md:max-w-[600px] aspect-[4/3] overflow-hidden transition-all duration-700">
+              <Image src={`${basePath}/img-0.jpeg`} alt="Shop" fill className="object-cover" />
+            </div>
+
+            <div className="text-[11px] md:text-xs tracking-[0.2em] space-y-8 pt-4">
+              <div className="flex flex-col gap-2">
+                <span className="font-black opacity-30 uppercase text-[9px]">Address</span>
+                <span>〒943-0138 新潟県上越市本長者原1</span>
+
+                <span className="cursor-pointer hover:line-through inline-block w-fit">
+                  <a
+                    href="https://www.google.com/maps/place/37%C2%B005'40.8%22N+138%C2%B016'51.8%22E/@37.08786,138.2673242,15z/data=!4m4!3m3!8m2!3d37.094663!4d138.281052?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+                    target="_blank"
+                  >
+                    Google Map
+                  </a>
+                </span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-black opacity-30 uppercase text-[9px]">mail</span>
+                <span>
+                  <a href="mailto:twilight_090913@yahoo.co.jp">twilight_090913@yahoo.co.jp</a>
+                </span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-black opacity-30 uppercase text-[9px]">Tel & Fax</span>
+                <span>080-3555-4417</span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-black opacity-30 uppercase text-[9px]">Open</span>
+                <span>12:00 - 21:00</span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-black opacity-30 uppercase text-[9px]">Instagram</span>
+                <SharedTabLink>
+                  <span>@twilight</span>
+                </SharedTabLink>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-black opacity-30 uppercase text-[9px]">access</span>
+                <span className="inline-flex items-center gap-1">
+                  <Square className="text-gray-400 inline" size={12} /> JR北陸新幹線 (東京-上越妙⾼/約2時間) 上越妙⾼駅より⾞で約15分
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  <Square className="text-gray-400 inline" size={12} /> 北陸⾃動⾞道 上越インターチェンジより⾞で約10分
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  <Square className="text-gray-400 inline" size={12} /> 上信越⾃動⾞道 上越⾼⽥インターチェンジより⾞で約15分
+                </span>
+              </div>
+            </div>
           </div>
-
-          <div className="text-[11px] md:text-xs tracking-[0.2em] space-y-8 pt-4">
-            <div className="flex flex-col gap-2">
-              <span className="font-black opacity-30 uppercase text-[9px]">Address</span>
-              <span>〒943-0138 新潟県上越市本長者原1</span>
-
-              <span className="cursor-pointer hover:line-through inline-block w-fit">
-                <a
-                  href="https://www.google.com/maps/place/37%C2%B005'40.8%22N+138%C2%B016'51.8%22E/@37.08786,138.2673242,15z/data=!4m4!3m3!8m2!3d37.094663!4d138.281052?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
-                  target="_blank"
-                >
-                  Google Map
-                </a>
-              </span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="font-black opacity-30 uppercase text-[9px]">mail</span>
-              <span>
-                <a href="mailto:twilight_090913@yahoo.co.jp">twilight_090913@yahoo.co.jp</a>
-              </span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="font-black opacity-30 uppercase text-[9px]">Tel & Fax</span>
-              <span>080-3555-4417</span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="font-black opacity-30 uppercase text-[9px]">Open</span>
-              <span>12:00 - 21:00</span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="font-black opacity-30 uppercase text-[9px]">Instagram</span>
-              <SharedTabLink>
-                <span>@twilight</span>
-              </SharedTabLink>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="font-black opacity-30 uppercase text-[9px]">access</span>
-              <span className="inline-flex items-center gap-1">
-                <Square className="text-gray-400 inline" size={12} /> JR北陸新幹線 (東京-上越妙⾼/約2時間) 上越妙⾼駅より⾞で約15分
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <Square className="text-gray-400 inline" size={12} /> 北陸⾃動⾞道 上越インターチェンジより⾞で約10分
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <Square className="text-gray-400 inline" size={12} /> 上信越⾃動⾞道 上越⾼⽥インターチェンジより⾞で約15分
-              </span>
-            </div>
-          </div>
-        </div>
-      </motion.section>
+        </motion.section>
+      </div>
 
       {/* ---  --- */}
       <motion.section {...fadeInUp} id="" className="w-full max-w-[900px] text-center">
