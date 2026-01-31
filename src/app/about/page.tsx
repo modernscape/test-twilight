@@ -147,7 +147,7 @@ export default function AboutPage() {
           <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
 
           {/* Shop Info with Image */}
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-16 text-left mb-10 md:mb-14">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-12 text-left mb-10 md:mb-14">
             <div
               className="
                           relative 
