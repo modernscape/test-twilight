@@ -116,10 +116,17 @@ export default function InteriorStack({basePath}: {basePath: string}) {
       <div className="block md:hidden space-y-4 py-25 mb-10">
         <h2 className="text-xl font-black tracking-[0.5em] uppercase text-center mb-8">SHOP</h2>
         {/* ✨ 画像コンテナ：ここで親の px-6 を打ち消す */}
-        <div className="flex flex-col space-y-2 -mx-6 w-screen overflow-x-hidden mb-40">
+        <div className="flex flex-col space-y-2 -mx-6 w-screen overflow-x-hidden mb-40 min-h-[500px]">
           {images.map((src, index) => (
             <div key={`mobile-${index}`} className="relative w-full aspect-[16/9]">
-              <Image src={`${basePath}${src}`} alt={`Interior ${index}`} fill className="object-cover" sizes="100vw" priority />
+              <Image
+                src={`${basePath}${src}`} //
+                alt={`Interior ${index}`}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={index < 2} // 最初の数枚だけ最優先にする
+              />
             </div>
           ))}
         </div>
@@ -128,7 +135,14 @@ export default function InteriorStack({basePath}: {basePath: string}) {
       {/* 💻 PC用 (Desktop): これまでのリッチなスタック演出 */}
       {/* // ✨ ポイント: h-[400vh] でスクロール量は確保しつつ、 // stickyコンテナを h-screen
       ではなく、画像と同じ比率（aspect-[16/9]）に合わせる */}
-      <div ref={containerRef} className="hidden md:block relative h-[800vh] w-full mt-5 landscape:mt-0 mb-20 ">
+      <div
+        ref={containerRef}
+        className="hidden md:block relative h-[800vh] w-full mt-5 landscape:mt-0 mb-20"
+        style={{
+          contentVisibility: "auto",
+          containIntrinsicSize: "0 800vh", // 高さ800vhであることをブラウザに予約させる
+        }}
+      >
         <div className="sticky top-0 left-0 w-full h-screen flex flex-col items-center justify-center">
           {/* ✨ コンポーネント化したインジケーターを配置 */}
           <VerticalIndicator total={images.length} progress={scrollYProgress} />
