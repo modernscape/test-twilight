@@ -93,7 +93,7 @@ export default function AboutPage() {
 
       {/* --- SELECTION SECTION --- */}
       <div className="relative">
-        <div id="selection" className="absolute -top-20 md:top-[-120px] invisible left-0 w-0 h-0"></div>
+        <div id="selection" className="absolute -top-20 md:top-[-120px] invisible left-0 w-0 h-0 overflow-hidden"></div>
         <motion.section {...fadeInUp} className="w-full max-w-[1100px] mb-0 text-center scroll-mt-100 landscape:scroll-mt-10">
           <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Location</h2>
 
@@ -142,7 +142,7 @@ export default function AboutPage() {
 
       {/* --- MORE INFORMATION (Company Info) --- */}
       <div className="relative">
-        <div id="company" className="absolute -top-20 md:top-[-120px] invisible left-0 w-0 h-0"></div>
+        <div id="company" className="absolute -top-20 md:top-[-120px] invisible left-0 w-0 h-0 overflow-hidden"></div>
         <motion.section {...fadeInUp} className="w-full max-w-[1200px] text-center scroll-mt-20 landscape:scroll-mt-10 mb-10">
           <h2 className="text-xl font-black tracking-[0.5em] uppercase mb-10">Company</h2>
 
