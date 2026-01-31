@@ -54,3 +54,12 @@ img[src=""] {
 img {
   text-indent: -10000px;
 }
+
+html {
+  overflow-x: hidden; /* htmlタグなら sticky を壊さないことが多いです */
+}
+
+body {
+  width: 100%;
+  position: relative;
+}
