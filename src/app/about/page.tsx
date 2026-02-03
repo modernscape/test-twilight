@@ -184,7 +184,7 @@ export default function AboutPage() {
               <div className="flex flex-col gap-2">
                 <span className="font-black opacity-30 uppercase text-[9px]">mail</span>
                 <span>
-                  <a href="mailto:twilight_090913@yahoo.co.jp">info@twilight-joetsu.com</a>
+                  <a href="mailto:info@twilight-joetsu.com">info@twilight-joetsu.com</a>
                 </span>
               </div>
               <div className="flex flex-col gap-2">
