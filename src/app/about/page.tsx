@@ -10,7 +10,7 @@ import {Square} from "lucide-react"
 
 export default function AboutPage() {
   // const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
-  const basePath = ""
+  const basePath = "."
 
   const fadeInUp = {
     initial: {opacity: 0, y: 100},

@@ -7,10 +7,10 @@ import VerticalIndicator from "./VerticalIndicator"
 import {useEffect} from "react"
 
 const images = [
-  "/hero-texture-1.jpeg", //
-  "/hero-texture-2.jpeg",
-  "/hero-texture-3.jpeg",
-  "/hero-texture-4.jpeg",
+  "./hero-texture-1.jpeg", //
+  "./hero-texture-2.jpeg",
+  "./hero-texture-3.jpeg",
+  "./hero-texture-4.jpeg",
 ]
 
 // ✨ 各画像を制御する子コンポーネント
