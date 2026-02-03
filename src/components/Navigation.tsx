@@ -8,7 +8,8 @@ import Menu from "./Menu"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-  const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
+  // const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
+  const basePath = ""
 
   return (
     <>

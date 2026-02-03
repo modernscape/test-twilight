@@ -10,7 +10,8 @@ export default function Home() {
   // 画像切り替え用のステート
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
 
-  const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
+  // const basePath = process.env.NODE_ENV === "production" ? "/twilight" : ""
+  const basePath = ""
 
   // 画像のリスト
   const images = [
