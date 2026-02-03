@@ -16,7 +16,7 @@ export default function Home() {
   // 画像のリスト
   const images = [
     `${basePath}/hero-texture-1.jpeg`,
-    `${basePath}/hero-texture-2.jpen`,
+    `${basePath}/hero-texture-2.jpeg`,
     `${basePath}/hero-texture-3.jpeg`,
     `${basePath}/hero-texture-4.jpeg`,
   ]

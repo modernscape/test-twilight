@@ -8,11 +8,8 @@ import {useEffect} from "react"
 
 const images = [
   "/hero-texture-1.jpeg", //
-
   "/hero-texture-2.jpeg",
-
   "/hero-texture-3.jpeg",
-
   "/hero-texture-4.jpeg",
 ]
 
