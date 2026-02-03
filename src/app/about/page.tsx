@@ -151,12 +151,12 @@ export default function AboutPage() {
             <div
               className="
                           relative 
-                          w-[70%]                 /* 👈 基本の幅を親の70%にする */
-                          md:w-full               /* 👈 PCでは親(flexアイテム)の全幅を使う */
-                          md:max-w-[400px]        /* 👈 ただしPCでも400px以上にはしない */
+                          w-[70%]                
+                          md:w-full               
+                          md:max-w-[400px]        
                           landscape:max-w-[400px]  
                           aspect-[4/3] 
-                          mx-auto                 /* 👈 中央に配置 */
+                          mx-auto                 
                           flex-shrink-0 
                           overflow-hidden 
                           transition-all 
@@ -183,7 +183,7 @@ export default function AboutPage() {
               <div className="flex flex-col gap-2">
                 <span className="font-black opacity-30 uppercase text-[9px]">mail</span>
                 <span>
-                  <a href="mailto:twilight_090913@yahoo.co.jp">twilight_090913@yahoo.co.jp</a>
+                  <a href="mailto:twilight_090913@yahoo.co.jp">info@twilight-joetsu.com</a>
                 </span>
               </div>
               <div className="flex flex-col gap-2">
